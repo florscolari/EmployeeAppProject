@@ -9,9 +9,11 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import au.edu.kbs.mobiledevelopment.employeeapp.MainActivity
 import au.edu.kbs.mobiledevelopment.employeeapp.R
 import au.edu.kbs.mobiledevelopment.employeeapp.databinding.FragmentAddEmployeeBinding
@@ -19,7 +21,7 @@ import au.edu.kbs.mobiledevelopment.employeeapp.viewmodel.EmployeeViewModel
 import au.edu.kbs.mobiledevelopment.employeeapp.model.Employee
 
 
-class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee), MenuProvider {
+class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
 
     private var addEmployeeBinding: FragmentAddEmployeeBinding? = null
     private val binding get() = addEmployeeBinding!!
@@ -39,13 +41,23 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee), MenuProvid
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // to initialize the menu
-        val menuHost = requireActivity()
-        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+        // Hide the global bar if it's showing
+        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+
+        // Setup toolbar with back btn
+        val toolbar = binding.addToolbar
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
+        toolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
 
         // to initialize the view model & the view itself
         employeeViewModel = (activity as MainActivity).employeeViewModel
         addEmployeeView = view
+
+        binding.addEmployeeSaveBtn.setOnClickListener{
+            saveEmployee(addEmployeeView)
+        }
     }
 
     private fun saveEmployee(view: View){
@@ -68,22 +80,6 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee), MenuProvid
         }
     }
 
-    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-        // Clear default menu
-        menu.clear()
-        // Attach the menu created for this fragment
-        menuInflater.inflate(R.menu.menu_add_employee, menu)
-    }
-
-    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        return when(menuItem.itemId){
-            R.id.saveMenu -> {
-                saveEmployee(addEmployeeView)
-                true
-            }
-            else -> false
-        }
-    }
 
     override fun onDestroy() {
         super.onDestroy()

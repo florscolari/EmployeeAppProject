@@ -8,15 +8,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".NewNoteFragment"
-        android:padding="12dp">
+        tools:context=".NewEmployeeFragment"
+        android:padding="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/addToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:title="Add Employee"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/addEmployeeHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_below="@id/addToolbar"
             android:fontFamily="@font/poppins_regular"
             android:text="@string/add_employee"
             android:textStyle="bold"
@@ -31,6 +42,8 @@
             android:hint="@string/enter_first_name"
             android:inputType="text"
             android:padding="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:textSize="16sp"
             android:layout_below="@id/addEmployeeHeading"
             android:layout_marginTop="16dp"
@@ -46,6 +59,8 @@
             android:inputType="text"
             android:gravity="top"
             android:padding="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:textSize="16sp"
             android:fontFamily="@font/poppins_regular"
             android:layout_below="@id/employeeFirstName"
@@ -57,6 +72,8 @@
             android:layout_height="60dp"
             android:layout_below="@id/employeeLastName"
             android:layout_marginTop="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:autofillHints=""
             android:fontFamily="@font/poppins_regular"
             android:gravity="top"
@@ -64,6 +81,18 @@
             android:inputType="text"
             android:padding="12dp"
             android:textSize="16sp" />
+
+
+        <Button
+            android:id="@+id/addEmployeeSaveBtn"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/editEmployeeJobRole"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/save" />
+
 
     </RelativeLayout>
 </layout>
