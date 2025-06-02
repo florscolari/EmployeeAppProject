@@ -32,5 +32,12 @@
         <action
             android:id="@+id/action_editEmployeeFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+
+       <!-- Attaching entity with nav graph -->
+       <argument
+           android:name="employee"
+           app:argType="au.edu.kbs.mobiledevelopment.employeeapp.model.Employee"
+           app:nullable="true"
+           />
     </fragment>
 </navigation>
