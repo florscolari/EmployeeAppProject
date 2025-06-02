@@ -23,16 +23,40 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_add" />
 
+        <!-- Tool Bar to keep same header height -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/homeMenu"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:icon="@drawable/ic_search"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:title="@string/search"
+            app:actionViewClass="androidx.appcompat.widget.SearchView"
+            app:layout_constraintTop_toTopOf="parent"
+            app:showAsAction="ifRoom"
+            tools:ignore="HardcodedText" />
+
+        <!-- Search feature -->
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:queryHint="Search employees..."
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/homeMenu"
+            app:layout_constraintBottom_toTopOf="@+id/homeRecyclerView"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/homeRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="80dp"
+            android:layout_height="620dp"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/gTop" />
+            app:layout_constraintTop_toBottomOf="@id/searchView"/>
 
         <ImageView
             android:layout_width="match_parent"
@@ -46,6 +70,6 @@
             android:id="@+id/gTop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintGuide_begin="180dp" />
+            app:layout_constraintGuide_begin="56dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

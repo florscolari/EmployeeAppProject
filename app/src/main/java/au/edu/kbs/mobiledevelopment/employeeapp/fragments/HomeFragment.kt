@@ -22,7 +22,7 @@ import au.edu.kbs.mobiledevelopment.employeeapp.model.Employee
 import au.edu.kbs.mobiledevelopment.employeeapp.viewmodel.EmployeeViewModel
 
 
-class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener, MenuProvider {
+class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener {
 
     private var homeBinding: FragmentHomeBinding? = null
     private val binding get() = homeBinding!!
@@ -46,11 +46,11 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
 
 
         // Show the global bar if it isn't showing
-        (requireActivity() as AppCompatActivity).supportActionBar?.show()
+        //(requireActivity() as AppCompatActivity).supportActionBar?.show()
 
         // to initialize the menu bar
-        val menuHost = requireActivity()
-        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+        //val menuHost = requireActivity()
+        //menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         // to initialize the view model
         employeeViewModel = (activity as MainActivity).employeeViewModel
@@ -117,7 +117,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         homeBinding = null
     }
 
-    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+    /*override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
         menu.clear()
         menuInflater.inflate(R.menu.home_menu, menu)
 
@@ -127,10 +127,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         menuSearch.isSubmitButtonEnabled = false
         menuSearch.setOnQueryTextListener(this)
 
-    }
+    }*/
 
-    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        return false
-    }
 
 }
