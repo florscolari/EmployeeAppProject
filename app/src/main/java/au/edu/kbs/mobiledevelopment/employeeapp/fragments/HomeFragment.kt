@@ -1,18 +1,18 @@
 package au.edu.kbs.mobiledevelopment.employeeapp.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import au.edu.kbs.mobiledevelopment.employeeapp.MainActivity
 import au.edu.kbs.mobiledevelopment.employeeapp.R
 import au.edu.kbs.mobiledevelopment.employeeapp.adapter.EmployeeAdapter
@@ -49,14 +49,13 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
 
         // to initialize the view model
         employeeViewModel = (activity as MainActivity).employeeViewModel
+        setupHomeRecyclerView()
 
         // set navigation from add employee fab btn (home fragment → addEmployee fragment)
         binding.addEmployeeFab.setOnClickListener{
             it.findNavController().navigate(R.id.action_homeFragment_to_addEmployeeFragment)
         }
     }
-
-    // A set of functions
 
     // To update the UI: switches between empty state (image) & list of employees when there is at least 1 employee to be listed.
     private fun updateUI(employee: List<Employee>?){
@@ -89,5 +88,45 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
        }
     }
 
+    private fun searchEmployee(query: String?){
+        val searchQuery = "%${query.toString()}"
+
+        employeeViewModel.searchEmployee(searchQuery).observe(this){ list ->
+            employeeAdapter.differ.submitList(list)
+        }
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        // Set to show results to the users as they are typing on the search bar
+        if (newText != null){
+            searchEmployee(newText)
+        }
+        return true
+    }
+
+    override fun onDestroy(){
+        super.onDestroy()
+        homeBinding = null
+    }
+
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        menu.clear()
+        menuInflater.inflate(R.menu.home_menu, menu)
+
+        //todo: check if there's an issue by passing Int (id) and String (names)
+        val menuSearch = menu.findItem(R.id.searchMenu).actionView as SearchView
+        // to use the search bar as filter, no need to tap on a btn to run the search
+        menuSearch.isSubmitButtonEnabled = false
+        menuSearch.setOnQueryTextListener(this)
+
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        return false
+    }
 
 }
