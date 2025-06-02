@@ -26,7 +26,7 @@ interface EmployeeDao {
     suspend fun deleteEmployee(employee: Employee)
 
     // Get All employees
-    @Query("SELECT * FROM EMPLOYEES ORDER BY id DESC")
+    @Query("SELECT * FROM EMPLOYEES ORDER BY lastName ASC")
     fun getAllEmployees(): LiveData<List<Employee>>
 
     // Search employees by id, first name and last name
