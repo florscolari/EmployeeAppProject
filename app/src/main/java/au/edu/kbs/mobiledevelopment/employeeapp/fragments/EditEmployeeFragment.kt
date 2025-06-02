@@ -2,17 +2,14 @@ package au.edu.kbs.mobiledevelopment.employeeapp.fragments
 
 import android.app.AlertDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.MenuProvider
-import androidx.lifecycle.Lifecycle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import au.edu.kbs.mobiledevelopment.employeeapp.MainActivity
 import au.edu.kbs.mobiledevelopment.employeeapp.R
@@ -20,7 +17,7 @@ import au.edu.kbs.mobiledevelopment.employeeapp.databinding.FragmentEditEmployee
 import au.edu.kbs.mobiledevelopment.employeeapp.model.Employee
 import au.edu.kbs.mobiledevelopment.employeeapp.viewmodel.EmployeeViewModel
 
-class EditEmployeeFragment : Fragment(R.layout.fragment_edit_employee), MenuProvider {
+class EditEmployeeFragment : Fragment(R.layout.fragment_edit_employee) {
 
     private var editEmployeeBinding: FragmentEditEmployeeBinding? = null
     private val binding get() = editEmployeeBinding!!
@@ -44,9 +41,17 @@ class EditEmployeeFragment : Fragment(R.layout.fragment_edit_employee), MenuProv
     override fun onViewCreated(view: View, savedInstanceState: Bundle?){
         super.onViewCreated(view, savedInstanceState)
 
-        // to initialize the menu
-        val menuHost = requireActivity()
-        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+        // Hide the global bar if it's showing
+        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+
+        // Setup toolbar with back btn
+        val toolbar = binding.editToolbar
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
+        toolbar.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
+
 
         // to initialize the view model & the view itself
         employeeViewModel = (activity as MainActivity).employeeViewModel
@@ -75,6 +80,10 @@ class EditEmployeeFragment : Fragment(R.layout.fragment_edit_employee), MenuProv
                 Toast.makeText(context, "Please enter employee's details", Toast.LENGTH_LONG).show()
             }
         }
+
+        binding.editEmployeeDeleteBtn.setOnClickListener{
+            deleteEmployee()
+        }
     }
 
     // Delete employee
@@ -91,19 +100,7 @@ class EditEmployeeFragment : Fragment(R.layout.fragment_edit_employee), MenuProv
         }.create().show()
     }
 
-    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-        menu.clear()
-        menuInflater.inflate(R.menu.menu_edit_employee, menu)
-    }
 
-    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        return when(menuItem.itemId) {
-            R.id.deleteMenu -> {
-                deleteEmployee()
-                true
-            } else -> false
-        }
-    }
 
     override fun onDestroy() {
         super.onDestroy()
