@@ -11,4 +11,5 @@
     <string name="enter_job_role">Job role</string>
     <string name="add_employee">Add Employee</string>
     <string name="edit_employee">Edit employee</string>
+    <string name="no_employees_in_the_list">No employees in the list</string>
 </resources>

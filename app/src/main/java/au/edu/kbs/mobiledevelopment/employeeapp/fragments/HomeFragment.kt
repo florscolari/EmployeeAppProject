@@ -5,56 +5,89 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuProvider
+import androidx.lifecycle.Lifecycle
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import au.edu.kbs.mobiledevelopment.employeeapp.MainActivity
 import au.edu.kbs.mobiledevelopment.employeeapp.R
+import au.edu.kbs.mobiledevelopment.employeeapp.adapter.EmployeeAdapter
+import au.edu.kbs.mobiledevelopment.employeeapp.databinding.FragmentHomeBinding
+import au.edu.kbs.mobiledevelopment.employeeapp.model.Employee
+import au.edu.kbs.mobiledevelopment.employeeapp.viewmodel.EmployeeViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener, MenuProvider {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var homeBinding: FragmentHomeBinding? = null
+    private val binding get() = homeBinding!!
+
+    // declarations for view model to connect with UI & adapter for recycler view
+    private lateinit var employeeViewModel: EmployeeViewModel
+    private lateinit var employeeAdapter: EmployeeAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        homeBinding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?){
+        super.onViewCreated(view, savedInstanceState)
+
+        // to initialize the menu
+        val menuHost = requireActivity()
+        menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+        // to initialize the view model
+        employeeViewModel = (activity as MainActivity).employeeViewModel
+
+        // set navigation from add employee fab btn (home fragment → addEmployee fragment)
+        binding.addEmployeeFab.setOnClickListener{
+            it.findNavController().navigate(R.id.action_homeFragment_to_addEmployeeFragment)
+        }
     }
+
+    // A set of functions
+
+    // To update the UI: switches between empty state (image) & list of employees when there is at least 1 employee to be listed.
+    private fun updateUI(employee: List<Employee>?){
+        if (employee != null){
+            if (employee.isEmpty()){
+                binding.emptyEmployeesImage.visibility = View.GONE
+                binding.homeRecyclerView.visibility = View.VISIBLE
+            } else {
+                binding.emptyEmployeesImage.visibility = View.VISIBLE
+                binding.homeRecyclerView.visibility = View.GONE
+            }
+        }
+    }
+
+    // Recycler View function
+    private fun setupHomeRecyclerView(){
+       employeeAdapter = EmployeeAdapter()
+       binding.homeRecyclerView.apply{
+           layoutManager = LinearLayoutManager(context)
+           setHasFixedSize(true)
+           adapter = employeeAdapter
+       }
+
+       // to display all employees the view model must be observed
+       activity?.let {
+           employeeViewModel.getAllEmployees().observe(viewLifecycleOwner){
+               employee -> employeeAdapter.differ.submitList(employee)
+               updateUI(employee)
+           }
+       }
+    }
+
+
 }
