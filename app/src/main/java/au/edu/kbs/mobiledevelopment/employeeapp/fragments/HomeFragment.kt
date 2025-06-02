@@ -59,16 +59,15 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
 
     // To update the UI: switches between empty state (image) & list of employees when there is at least 1 employee to be listed.
     private fun updateUI(employee: List<Employee>?){
-        if (employee != null){
-            if (employee.isEmpty()){
-                binding.emptyEmployeesImage.visibility = View.GONE
-                binding.homeRecyclerView.visibility = View.VISIBLE
-            } else {
+        if (employee.isNullOrEmpty()){
                 binding.emptyEmployeesImage.visibility = View.VISIBLE
                 binding.homeRecyclerView.visibility = View.GONE
+            } else {
+                binding.emptyEmployeesImage.visibility = View.GONE
+                binding.homeRecyclerView.visibility = View.VISIBLE
             }
-        }
     }
+
 
     // Recycler View function
     private fun setupHomeRecyclerView(){
