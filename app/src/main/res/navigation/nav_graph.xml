@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="au.edu.kbs.mobiledevelopment.employeeapp.fragments.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_addEmployeeFragment"
+            app:destination="@id/addEmployeeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_editEmployeeFragment"
+            app:destination="@id/editEmployeeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addEmployeeFragment"
+        android:name="au.edu.kbs.mobiledevelopment.employeeapp.fragments.AddEmployeeFragment"
+        android:label="AddEmployeeFragment" >
+        <action
+            android:id="@+id/action_addEmployeeFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editEmployeeFragment"
+        android:name="au.edu.kbs.mobiledevelopment.employeeapp.fragments.EditEmployeeFragment"
+        android:label="EditEmployeeFragment" >
+        <action
+            android:id="@+id/action_editEmployeeFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+</navigation>
