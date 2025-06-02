@@ -1,10 +1,7 @@
 package au.edu.kbs.mobiledevelopment.employeeapp
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import au.edu.kbs.mobiledevelopment.employeeapp.database.EmployeeDatabase
 import au.edu.kbs.mobiledevelopment.employeeapp.repository.EmployeeRepository
