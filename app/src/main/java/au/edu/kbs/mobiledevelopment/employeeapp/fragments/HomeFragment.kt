@@ -2,16 +2,10 @@ package au.edu.kbs.mobiledevelopment.employeeapp.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import au.edu.kbs.mobiledevelopment.employeeapp.MainActivity
@@ -45,12 +39,19 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         super.onViewCreated(view, savedInstanceState)
 
 
-        // Show the global bar if it isn't showing
-        //(requireActivity() as AppCompatActivity).supportActionBar?.show()
+        // search feature
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                query?.let { searchEmployee(it) }
+                return true
+            }
 
-        // to initialize the menu bar
-        //val menuHost = requireActivity()
-        //menuHost.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+            override fun onQueryTextChange(newText: String?): Boolean {
+                searchEmployee(newText.orEmpty())
+                return true
+            }
+        })
+
 
         // to initialize the view model
         employeeViewModel = (activity as MainActivity).employeeViewModel
@@ -92,13 +93,13 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
        }
     }
 
-    private fun searchEmployee(query: String?){
-        val searchQuery = "%${query.toString()}"
-
-        employeeViewModel.searchEmployee(searchQuery).observe(this){ list ->
-            employeeAdapter.differ.submitList(list)
+    private fun searchEmployee(query: String) {
+        val formattedQuery = "%${query.trim()}%"
+        employeeViewModel.searchEmployee(formattedQuery).observe(viewLifecycleOwner) { employees ->
+            employeeAdapter.differ.submitList(employees)
         }
     }
+
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         return false

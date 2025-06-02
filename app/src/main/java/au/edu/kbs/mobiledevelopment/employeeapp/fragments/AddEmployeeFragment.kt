@@ -1,24 +1,18 @@
 package au.edu.kbs.mobiledevelopment.employeeapp.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.MenuProvider
-import androidx.lifecycle.Lifecycle
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import au.edu.kbs.mobiledevelopment.employeeapp.MainActivity
 import au.edu.kbs.mobiledevelopment.employeeapp.R
 import au.edu.kbs.mobiledevelopment.employeeapp.databinding.FragmentAddEmployeeBinding
-import au.edu.kbs.mobiledevelopment.employeeapp.viewmodel.EmployeeViewModel
 import au.edu.kbs.mobiledevelopment.employeeapp.model.Employee
+import au.edu.kbs.mobiledevelopment.employeeapp.viewmodel.EmployeeViewModel
 
 
 class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
@@ -41,8 +35,6 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Hide the global bar if it's showing
-        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
 
         // Setup toolbar with back btn
         val toolbar = binding.addToolbar
