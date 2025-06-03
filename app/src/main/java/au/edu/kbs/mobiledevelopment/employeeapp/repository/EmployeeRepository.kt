@@ -8,19 +8,22 @@ import au.edu.kbs.mobiledevelopment.employeeapp.model.Employee
 class EmployeeRepository(private val db: EmployeeDatabase) {
     // I'm calling the methods defined on EmployeeDao interface and I'll be using from here as functions
 
-    // Create Employee function
+    // Insert All Employees method
+    suspend fun insertAll(employees: List<Employee>) = db.getEmployeeDao().insertAll(employees)
+
+    // Create Employee method
     suspend fun insertEmployee(employee: Employee) = db.getEmployeeDao().insertEmployee(employee)
 
-    // Delete Employee function
+    // Delete Employee method
     suspend fun deleteEmployee(employee: Employee) = db.getEmployeeDao().deleteEmployee(employee)
 
-    // Update Employee function
+    // Update Employee method
     suspend fun updateEmployee(employee: Employee) = db.getEmployeeDao().updateEmployee(employee)
 
-    // Get All Employee function - No parameter required because is retrieving all employees
+    // Get All Employee method - No parameter required because is retrieving all employees
     fun getAllEmployees() = db.getEmployeeDao().getAllEmployees()
 
-    // Search Employee function
+    // Search Employee method
     fun searchEmployee(query: String?) = db.getEmployeeDao().searchEmployee(query)
 
 }

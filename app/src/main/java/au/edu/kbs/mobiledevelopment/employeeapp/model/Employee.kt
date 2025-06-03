@@ -12,7 +12,20 @@ data class Employee(
     val id: Int,
     val firstName: String,
     val lastName: String,
-    val jobRole: String
+    val jobRole: String,
+    val imgReference: String,
+    val initials: String,
+    val phoneNumber: String,
+    val email: String,
+    val department: String,
+    val hireDate: String,
+    val contractType: String,
+    val salary: Double,
+    val address: String,
+    val city: String,
+    val state: String,
+    val zipCode: String,
+    val country: String,
 ): Parcelable
 
 //Parcelization to be able to convert complex objects in simple data to pass among activities/fragments

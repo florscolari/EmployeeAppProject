@@ -86,9 +86,9 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
 
        // to display all employees the view model must be observed
        activity?.let {
-           employeeViewModel.getAllEmployees().observe(viewLifecycleOwner){
-               employee -> employeeAdapter.differ.submitList(employee)
-               updateUI(employee)
+           employeeViewModel.allEmployees.observe(viewLifecycleOwner){
+               employees -> employeeAdapter.differ.submitList(employees)
+               updateUI(employees)
            }
        }
     }

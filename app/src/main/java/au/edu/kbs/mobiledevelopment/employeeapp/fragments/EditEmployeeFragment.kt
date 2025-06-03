@@ -62,14 +62,41 @@ class EditEmployeeFragment : Fragment(R.layout.fragment_edit_employee) {
         binding.editEmployeeJobRole.setText(currentEmployee.jobRole)
 
         binding.editEmployeeSaveBtn.setOnClickListener{
+            // calculate the initials when getting from user input
+            fun getInitials(firstName: String?, lastName: String?): String {
+                var initials = ""
+                if (firstName != null && firstName.isNotEmpty()) {
+                    initials += firstName.take(1)
+                }
+                if (lastName != null && lastName.isNotEmpty()) {
+                    initials += lastName.take(1)
+                }
+                return initials
+            }
+
             // Taking user inputs
             val firstName = binding.editEmployeeFirstName.text.toString().trim()
             val lastName = binding.editEmployeeLastName.text.toString().trim()
             val jobRole = binding.editEmployeeJobRole.text.toString().trim()
 
+            //todo: values to add
+            val imgReference = "aaa"
+            val initials = getInitials(firstName, lastName)
+            val phoneNumber = "00"
+            val email = "a@e.com"
+            val department = ""
+            val hireDate = ""
+            val contractType = ""
+            val salary = 000.00
+            val address = ""
+            val city = ""
+            val state = ""
+            val zipCode = ""
+            val country = "Australia"
+
             if (firstName.isNotEmpty() && lastName.isNotEmpty() && jobRole.isNotEmpty()){
                 // if details are input, then save them to the database
-                val employee = Employee(currentEmployee.id, firstName, lastName, jobRole)
+                val employee = Employee(currentEmployee.id, firstName, lastName, jobRole, imgReference, initials, phoneNumber, email, department, hireDate, contractType, salary, address, city, state, zipCode, country)
                 employeeViewModel.updateEmployee(employee)
 
                 // display a successful message and navigate back to the main screen

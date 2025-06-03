@@ -25,7 +25,8 @@ class EmployeeViewModel(app: Application, private val employeeRepository: Employ
             employeeRepository.deleteEmployee(employee)
         }
 
-    fun getAllEmployees() = employeeRepository.getAllEmployees()
+    //fun getAllEmployees() = employeeRepository.getAllEmployees()
+    val allEmployees = employeeRepository.getAllEmployees()
 
     fun searchEmployee(query: String?) =
         employeeRepository.searchEmployee(query)
