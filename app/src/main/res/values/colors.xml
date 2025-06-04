@@ -7,7 +7,7 @@
     <color name="pink">#F88379</color>
     <color name="red">#c13b34</color>
     <color name="blue">#265c78</color>
-    <color name="blueVariant">#2b8baf</color>
+    <color name="blueVariant">#267C9C</color>
 
     <!--bg colors for toast component -->
     <color name="toast_red">#c0392b</color>

@@ -368,7 +368,7 @@
             android:fontFamily="@font/poppins_regular"
             android:gravity="top"
             android:hint="@string/enter_phone_number"
-            android:inputType="number"
+            android:inputType="phone"
             app:counterEnabled="true"
             app:counterMaxLength="10"
             android:padding="12dp"
