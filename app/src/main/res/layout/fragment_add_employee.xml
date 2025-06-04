@@ -33,7 +33,7 @@
             android:fontFamily="@font/poppins_regular"
             android:text="@string/add_employee"
             android:textStyle="bold"
-            android:textColor="@color/red"
+            android:textColor="@color/blueVariant"
             android:textSize="24sp" />
 
         <TextView

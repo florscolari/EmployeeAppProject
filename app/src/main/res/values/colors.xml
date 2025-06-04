@@ -6,5 +6,11 @@
     <!--todo: change for my own ones after the logic works -->
     <color name="pink">#F88379</color>
     <color name="red">#c13b34</color>
+    <color name="blue">#265c78</color>
+    <color name="blueVariant">#2b8baf</color>
+
+    <!--bg colors for toast component -->
+    <color name="toast_red">#c0392b</color>
+    <color name="toast_green">#27ae60</color>
 
 </resources>
