@@ -1,5 +1,6 @@
 package au.edu.kbs.mobiledevelopment.employeeapp.fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Patterns
 import android.view.LayoutInflater
@@ -8,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import au.edu.kbs.mobiledevelopment.employeeapp.MainActivity
 import au.edu.kbs.mobiledevelopment.employeeapp.R
 import au.edu.kbs.mobiledevelopment.employeeapp.databinding.FragmentAddEmployeeBinding
@@ -36,13 +36,50 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        fun checkForChangesBeforeLeaving() {
+            val hasAnyInput = listOf(
+                binding.employeeFirstName.text.toString(),
+                binding.employeeLastName.text.toString(),
+                binding.employeeJobRole.text.toString(),
+                binding.employeeDepartment.text.toString(),
+                binding.employeeHireDate.text.toString(),
+                binding.employeeContractType.text.toString(),
+                binding.employeeSalary.text.toString(),
+                binding.employeeEmail.text.toString(),
+                binding.employeePhoneNumber.text.toString(),
+                binding.employeeAddress.text.toString(),
+                binding.employeeCity.text.toString(),
+                binding.employeeState.text.toString(),
+                binding.employeeZipCode.text.toString(),
+                binding.employeeCountry.text.toString()
+            ).any { it.isNotEmpty() }
 
+            if (hasAnyInput) {
+                AlertDialog.Builder(activity).apply {
+                    setTitle("Unsaved Changes")
+                    setMessage("You may have unsaved changes. Are you sure you want to  leave?")
+                    setPositiveButton("Leave") { _, _ ->
+                        view.findNavController().popBackStack(R.id.homeFragment, false)
+                    }
+                    setNegativeButton("Stay", null)
+                }.create().show()
+            } else {
+                view.findNavController().popBackStack(R.id.homeFragment, false)
+            }
+        }
         // Setup toolbar with back btn
         val toolbar = binding.addToolbar
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
+        // Check if at least 1 fields has been input -> show confirmation message to leave
         toolbar.setNavigationOnClickListener {
-            findNavController().navigateUp()
+            checkForChangesBeforeLeaving()
         }
+
+
+
+
+
+
 
         // to initialize the view model & the view itself
         employeeViewModel = (activity as MainActivity).employeeViewModel
@@ -52,6 +89,8 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
             saveEmployee(addEmployeeView)
         }
     }
+
+
 
     private fun saveEmployee(view: View){
         // calculate the initials when getting from user input
@@ -71,7 +110,6 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
         val firstName = binding.employeeFirstName.text.toString().trim()
         val lastName = binding.employeeLastName.text.toString().trim()
         val jobRole = binding.employeeJobRole.text.toString().trim()
-        // Extended user inputs
         val department = binding.employeeDepartment.text.toString().trim()
         val hireDate = binding.employeeHireDate.text.toString().trim()
         val contractType = binding.employeeContractType.text.toString().trim()
