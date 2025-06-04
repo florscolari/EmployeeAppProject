@@ -51,4 +51,7 @@
     <string name="prepositionIn">" | "</string>
     <string name="employeeId">ID: 12345</string>
 
+    <string name="employeeHeading">EmployMate</string>
+    <string name="employeeSubheading">Keep track of your team — add, edit, or search employees in a snap!</string>
+
 </resources>
