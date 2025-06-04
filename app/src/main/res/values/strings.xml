@@ -36,6 +36,7 @@
     <string name="contractTypeRequired">Enter contract type</string>
     <string name="salaryRequired">Enter salary</string>
     <string name="emailRequired">Enter email address</string>
+    <string name="emailFormat">Invalid email format</string>
     <string name="phoneNumberRequired">Enter phone number</string>
     <string name="cityRequired">Enter city</string>
     <string name="addressRequired">Enter address line</string>

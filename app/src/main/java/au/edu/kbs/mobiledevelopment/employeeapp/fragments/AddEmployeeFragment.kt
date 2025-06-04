@@ -1,6 +1,7 @@
 package au.edu.kbs.mobiledevelopment.employeeapp.fragments
 
 import android.os.Bundle
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +14,6 @@ import au.edu.kbs.mobiledevelopment.employeeapp.R
 import au.edu.kbs.mobiledevelopment.employeeapp.databinding.FragmentAddEmployeeBinding
 import au.edu.kbs.mobiledevelopment.employeeapp.model.Employee
 import au.edu.kbs.mobiledevelopment.employeeapp.viewmodel.EmployeeViewModel
-import java.util.Locale
 
 
 class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
@@ -145,14 +145,17 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
                 null
             }
         }
-        fun email(): Unit? {
-            return if (email.isNotEmpty()) {
-                binding.employeeEmailHelperText.visibility = View.INVISIBLE
-            } else {
+        fun email() {
+            return if (email.isEmpty()) {
                 binding.employeeEmailHelperText.visibility = View.VISIBLE
-                null
+            } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                binding.employeeEmailHelperText.setText(R.string.emailFormat)
+                binding.employeeEmailHelperText.visibility = View.VISIBLE
+            } else {
+                binding.employeeEmailHelperText.visibility = View.INVISIBLE
             }
         }
+
         fun phoneNumber(): Unit? {
             return if (phoneNumber.isNotEmpty()) {
                 binding.employeePhoneNumberHelperText.visibility = View.INVISIBLE
@@ -232,7 +235,7 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
             view.findNavController().popBackStack(R.id.homeFragment, false)
         } else {
             // not all details are completed, then show general message at the bottom
-            Toast.makeText(addEmployeeView.context, "Employee added", Toast.LENGTH_LONG).show()
+            Toast.makeText(addEmployeeView.context, "Please enter all fields required with valid data", Toast.LENGTH_LONG).show()
             // checking which input field was incomplete and show message at input field level
             firstName()
             lastName()
