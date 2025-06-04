@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -16,6 +17,10 @@ import au.edu.kbs.mobiledevelopment.employeeapp.R
 import au.edu.kbs.mobiledevelopment.employeeapp.databinding.FragmentEditEmployeeBinding
 import au.edu.kbs.mobiledevelopment.employeeapp.model.Employee
 import au.edu.kbs.mobiledevelopment.employeeapp.viewmodel.EmployeeViewModel
+import com.google.android.material.datepicker.MaterialDatePicker
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class EditEmployeeFragment : Fragment(R.layout.fragment_edit_employee) {
 
@@ -44,6 +49,89 @@ class EditEmployeeFragment : Fragment(R.layout.fragment_edit_employee) {
 
         // Hide the global bar if it's showing
         (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+
+        // Dropdown for Department Options
+        val departmentDropdown = listOf("Admin", "Finance", "HR", "IT", "Marketing", "Sales")
+        val departmentAdapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_list_item_1,
+            departmentDropdown
+        )
+
+        binding.editEmployeeDepartment.setAdapter(departmentAdapter)
+        binding.editEmployeeDepartment.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                binding.editEmployeeDepartment.showDropDown()
+            }
+        }
+
+        // Dropdown for Job role Options
+        val jobRoleDropdown = listOf("Customer Service Rep",
+            "Delivery Driver",
+            "Finance Assistant",
+            "HR Analyst",
+            "HR Manager",
+            "Inventory Analyst",
+            "IT Analyst",
+            "IT Manager",
+            "IT Support Technician",
+            "Logistics Coordinator",
+            "Logistics Coordinator",
+            "MKT Analyst",
+            "Sales Associate",
+            "Store Manager",
+            "Warehouse Driver",
+            "Warehouse Worker",)
+        val jobRoleAdapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_list_item_1,
+            jobRoleDropdown
+        )
+
+        binding.editEmployeeJobRole.setAdapter(jobRoleAdapter)
+        binding.editEmployeeJobRole.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                binding.editEmployeeJobRole.showDropDown()
+            }
+        }
+
+        // Dropdown for Contract Type Options
+        val contractTypeDropdown = listOf("Full-time", "Part-time", "Casual", "Contract")
+        val contractTypeAdapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_list_item_1,
+            contractTypeDropdown
+        )
+
+        binding.editEmployeeContractType.setAdapter(contractTypeAdapter)
+        binding.editEmployeeContractType.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                binding.editEmployeeContractType.showDropDown()
+            }
+        }
+
+        // Date Picker from MaterialDatePicker UI Component for Hire Date
+        // Grabbing UI element from fragment .xml
+        val hireDate = binding.editEmployeeHireDate
+        val datePicker = MaterialDatePicker.Builder.datePicker()
+            .setTitleText("Select Hiring Date")
+            .build()
+
+        // To display the picker when user taps the input field
+        hireDate.setOnClickListener{
+            datePicker.show(parentFragmentManager, "DATE_PICKER")
+        }
+
+        // To handle when user selects the date from the picker
+        datePicker.addOnPositiveButtonClickListener { selection ->
+            val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+            val formattedDate = sdf.format(Date(selection))
+            hireDate.setText(formattedDate)
+        } // When typing the date, the pattern is MM-dd-yyyy but I couldn't change it.
+
+
+
+
 
         // Setup toolbar with back btn
         val toolbar = binding.editToolbar
