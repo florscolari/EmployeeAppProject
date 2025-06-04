@@ -1,0 +1,12 @@
+Abeythilake U., (2023), Todo List App with Room Database, Kotlin MVVM architecture, Linkeding Article, View on Jun 1 2025 <https://www.linkedin.com/pulse/todo-list-app-room-database-kotlin-mvvm-architecture-abeythilake/>
+adichrisworo, (2023), Illustration of teamwork, Freepik, View on Jun 5 2025 <https://www.freepik.com/premium-vector/illustration-teamwork_1918453.htm#fromView=search&page=1&position=12&uuid=4ddca250-578a-4bb4-8429-f880b5f095cd&query=team>
+Android Knowledge, (2023), The Notes App (MVVM + ROOM Database) in Android Studio using Kotlin | CRUD, Android Knowledge Youtube Channel, View on Jun 2 2025 <https://youtu.be/zCDB-OqOzfY?si=mTWVCudCbkLXOD2I>
+Android Knowledge, (2023), How to Change App Icon and App Name in Android Studio | Explanation Video, Android Knowledge Youtube Channel, View on Jun 5 2025 <https://youtu.be/v4gmd61SmIk?si=nT_OR3LSdVKgzpME>
+BwandoWando, (2020), Face Dataset Of People That Don't Exist, Kaggle, View on May 31 2025 <https://www.kaggle.com/datasets/bwandowando/all-these-people-dont-exist>
+Code Easy, (2023), How to Implement ScrollView in Android, CodeEasy Youtube Channel , View on Jun 4 2025 <https://youtu.be/K4CGYiQu52s?si=_zNE3gE_-JgaIZyJ>
+FineGap, (2023), How To Make Dropdown Menu in Android Studio, FineGap Youtube Channel, View on Jun 4 2025 <https://youtu.be/jXSNobmB7u4?si=GAALTLi5udIt_pJX>
+FoxAndroid, (2021), ROOM Database - #1 Database Initialization | Introduction to ROOM Database | Android Studio Tutorial, FoxAndroid Youtube Channel, View on Jun 1 2025 <https://youtu.be/NS7yYdW3Lho?si=QsiOrPoYzuABgjF_>
+GenAi, (2025), ChatGPT Conversation, ChatGPT, View on Jun 1 2025 <https://chatgpt.com/share/684095d8-1270-8010-b98c-533b65351098>
+Hill C., (2022), Validate Edit Text Android Studio Kotlin Tutorial - Use TextInputEditText in TextInputLayout, Code with Cal, View on Jun 4 2025 <https://youtu.be/Gc0sLf91QeM?si=BH2fNNCm_Mr5D-fH>
+Hill C., (2022), How to Change App Icon in Android Studio | Beginner Tutorial, Code with Cal, View on Jun 5 2025 <https://youtu.be/bJjHgWjiAKw?si=8Swjk8cZXedeQq6k>
+Sandoval M., (2018), Room — Kotlin, Android Architecture Components, MindOrks, View on Jun 1 2025 <https://medium.com/mindorks/room-kotlin-android-architecture-components-71cad5a1bb35>
