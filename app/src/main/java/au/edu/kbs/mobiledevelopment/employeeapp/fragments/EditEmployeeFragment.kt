@@ -65,6 +65,12 @@ class EditEmployeeFragment : Fragment(R.layout.fragment_edit_employee) {
             }
         }
 
+
+        // Forces the dropdown to open even after removing the option
+        binding.editEmployeeDepartment.setOnClickListener{
+            binding.editEmployeeDepartment.showDropDown()
+        }
+
         // Dropdown for Job role Options
         val jobRoleDropdown = listOf("Customer Service Rep",
             "Delivery Driver",
@@ -95,6 +101,11 @@ class EditEmployeeFragment : Fragment(R.layout.fragment_edit_employee) {
             }
         }
 
+        // Forces the dropdown to open even after removing the option
+        binding.editEmployeeJobRole.setOnClickListener{
+            binding.editEmployeeJobRole.showDropDown()
+        }
+
         // Dropdown for Contract Type Options
         val contractTypeDropdown = listOf("Full-time", "Part-time", "Casual", "Contract")
         val contractTypeAdapter = ArrayAdapter(
@@ -108,6 +119,11 @@ class EditEmployeeFragment : Fragment(R.layout.fragment_edit_employee) {
             if (hasFocus) {
                 binding.editEmployeeContractType.showDropDown()
             }
+        }
+
+        // Forces the dropdown to open even after removing the option
+        binding.editEmployeeContractType.setOnClickListener{
+            binding.editEmployeeContractType.showDropDown()
         }
 
         // Date Picker from MaterialDatePicker UI Component for Hire Date
@@ -363,7 +379,7 @@ class EditEmployeeFragment : Fragment(R.layout.fragment_edit_employee) {
                 hireDate.isNotEmpty() &&
                 contractType.isNotEmpty() &&
                 salary.isNotEmpty()  &&
-                email.isNotEmpty() &&
+                email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches() &&
                 phoneNumber.isNotEmpty() &&
                 city.isNotEmpty() &&
                 address.isNotEmpty() &&

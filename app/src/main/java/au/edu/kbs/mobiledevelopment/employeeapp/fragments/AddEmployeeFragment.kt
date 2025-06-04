@@ -49,11 +49,16 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
             departmentDropdown
         )
 
+        // Covers AutoCompleteTextView (as a suggestion)
         binding.employeeDepartment.setAdapter(departmentAdapter)
         binding.employeeDepartment.setOnFocusChangeListener { _, hasFocus ->
             if (hasFocus) {
                 binding.employeeDepartment.showDropDown()
             }
+        }
+        // Forces the dropdown to open even after removing the option
+        binding.employeeDepartment.setOnClickListener{
+            binding.employeeDepartment.showDropDown()
         }
 
         // Dropdown for Job role Options
@@ -86,6 +91,11 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
             }
         }
 
+        // Forces the dropdown to open even after removing the option
+        binding.employeeJobRole.setOnClickListener{
+            binding.employeeJobRole.showDropDown()
+        }
+
         // Dropdown for Contract Type Options
         val contractTypeDropdown = listOf("Full-time", "Part-time", "Casual", "Contract")
         val contractTypeAdapter = ArrayAdapter(
@@ -99,6 +109,11 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
             if (hasFocus) {
                 binding.employeeContractType.showDropDown()
             }
+        }
+
+        // Forces the dropdown to open even after removing the option
+        binding.employeeContractType.setOnClickListener{
+            binding.employeeContractType.showDropDown()
         }
 
         // Date Picker from MaterialDatePicker UI Component for Hire Date
@@ -349,7 +364,7 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
             hireDate.isNotEmpty() &&
             contractType.isNotEmpty() &&
             salary.isNotEmpty()  &&
-            email.isNotEmpty() &&
+            email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches() &&
             phoneNumber.isNotEmpty() &&
             city.isNotEmpty() &&
             address.isNotEmpty() &&
