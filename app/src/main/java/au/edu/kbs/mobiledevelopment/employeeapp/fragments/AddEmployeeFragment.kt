@@ -163,6 +163,11 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
             checkForChangesBeforeLeaving()
         }
 
+        // Set Cancel btn to Stay or Leave
+        val cancelBtn = binding.addEmployeeCancelBtn
+        cancelBtn.setOnClickListener {
+            checkForChangesBeforeLeaving()
+        }
 
 
         // to initialize the view model & the view itself

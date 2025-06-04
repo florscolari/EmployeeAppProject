@@ -549,12 +549,13 @@
             android:layout_marginEnd="16dp"
             android:text="@string/save" />
 
-        <Button
-            android:id="@+id/addEmployeeCancelBtn"
+        <com.google.android.material.button.MaterialButton
+        android:id="@+id/addEmployeeCancelBtn"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="120dp"
             android:layout_height="60dp"
             android:layout_below="@id/addEmployeeSaveBtn"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:text="@string/cancel" />
