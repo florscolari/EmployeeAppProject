@@ -46,6 +46,7 @@ class EmployeeAdapter : RecyclerView.Adapter<EmployeeAdapter.EmployeeViewHolder>
 
         // I'm linking UI elements with data to be displayed
         //TODO:If I want to display another attribute in the list, I need to come back here and adjust it
+        holder.itemBinding.employeeInitials.text = currentEmployee.initials
         holder.itemBinding.employeeFirstName.text = currentEmployee.firstName
         holder.itemBinding.employeeLastName.text = currentEmployee.lastName
         holder.itemBinding.employeeJobRole.text = currentEmployee.jobRole

@@ -9,6 +9,10 @@
     <color name="blue">#265c78</color>
     <color name="blueVariant">#267C9C</color>
 
+    <!-- Initials -->
+    <color name="blueLight">#CCE5FF</color>
+    <color name="blueDark">#1A1A1A</color>
+
     <!--bg colors for toast component -->
     <color name="toast_red">#c0392b</color>
     <color name="toast_green">#27ae60</color>

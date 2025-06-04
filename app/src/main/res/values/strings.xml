@@ -47,5 +47,6 @@
     <string name="firstname">FirstName</string>
     <string name="lastname">LastName</string>
     <string name="job_role">Job Role</string>
+    <string name="ab">AB</string>
 
 </resources>
