@@ -2,6 +2,7 @@ package au.edu.kbs.mobiledevelopment.employeeapp.fragments
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -129,17 +130,51 @@ class EditEmployeeFragment : Fragment(R.layout.fragment_edit_employee) {
             hireDate.setText(formattedDate)
         } // When typing the date, the pattern is MM-dd-yyyy but I couldn't change it.
 
+        // Checks if at least 1 input has an update (value different from the one pulled from the database) to show an Alert Dialog when back btn tapped
+        fun checkForChangesBeforeLeaving(currentEmployee: Employee) {
+            val hasChanges = listOf(
+                binding.editEmployeeFirstName.text.toString() != currentEmployee.firstName,
+                binding.editEmployeeLastName.text.toString() != currentEmployee.lastName,
+                binding.editEmployeeJobRole.text.toString() != currentEmployee.jobRole,
+                binding.editEmployeeDepartment.text.toString() != currentEmployee.department,
+                binding.editEmployeeHireDate.text.toString() != currentEmployee.hireDate,
+                binding.editEmployeeContractType.text.toString() != currentEmployee.contractType,
+                binding.editEmployeeSalary.text.toString() != currentEmployee.salary.toString(),
+                binding.editEmployeeEmail.text.toString() != currentEmployee.email,
+                binding.editEmployeePhoneNumber.text.toString() != currentEmployee.phoneNumber,
+                binding.editEmployeeAddress.text.toString() != currentEmployee.address,
+                binding.editEmployeeCity.text.toString() != currentEmployee.city,
+                binding.editEmployeeState.text.toString() != currentEmployee.state,
+                binding.editEmployeeZipCode.text.toString() != currentEmployee.zipCode,
+                binding.editEmployeeCountry.text.toString() != currentEmployee.country
+            ).any { it }
 
-
-
+            if (hasChanges) {
+                AlertDialog.Builder(activity).apply {
+                    setTitle("Unsaved Changes")
+                    setMessage("You've made changes. Are you sure you want to leave?")
+                    setPositiveButton("Leave") { _, _ ->
+                        view.findNavController().popBackStack(R.id.homeFragment, false)
+                    }
+                    setNegativeButton("Stay", null)
+                }.create().show()
+            } else {
+                view.findNavController().popBackStack(R.id.homeFragment, false)
+            }
+        }
 
         // Setup toolbar with back btn
         val toolbar = binding.editToolbar
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
         toolbar.setNavigationOnClickListener {
-            findNavController().navigateUp()
+            checkForChangesBeforeLeaving(currentEmployee)
         }
 
+        // Set Cancel btn to Stay or Leave
+        val cancelBtn = binding.editEmployeeCancelBtn
+        cancelBtn.setOnClickListener {
+            checkForChangesBeforeLeaving(currentEmployee)
+        }
 
         // to initialize the view model & the view itself
         employeeViewModel = (activity as MainActivity).employeeViewModel
@@ -193,10 +228,145 @@ class EditEmployeeFragment : Fragment(R.layout.fragment_edit_employee) {
             //Initials are manipulated but not asked to the user
             val initials = getInitials(firstName, lastName)
 
+            // IF user removes value on input fields --> each case handle with helper text displayed at input field level
+            fun firstName(): Unit? {
+                return if (firstName.isNotEmpty()) {
+                    binding.employeeFirstNameHelperText.visibility = View.INVISIBLE
+                } else {
+                    binding.employeeFirstNameHelperText.visibility = View.VISIBLE
+                    null
+                }
+            }
 
-            if (firstName.isNotEmpty() && lastName.isNotEmpty() && jobRole.isNotEmpty()){
+            fun lastName(): Unit? {
+                return if (lastName.isNotEmpty()) {
+                    binding.employeeLastNameHelperText.visibility = View.INVISIBLE
+                } else {
+                    binding.employeeLastNameHelperText.visibility = View.VISIBLE
+                    null
+                }
+            }
+            fun jobRole(): Unit? {
+                return if (jobRole.isNotEmpty()) {
+                    binding.employeeJobRoleHelperText.visibility = View.INVISIBLE
+                } else {
+                    binding.employeeJobRoleHelperText.visibility = View.VISIBLE
+                    null
+                }
+            }
+            fun department(): Unit? {
+                return if (department.isNotEmpty()) {
+                    binding.employeeDepartmentHelperText.visibility = View.INVISIBLE
+                } else {
+                    binding.employeeDepartmentHelperText.visibility = View.VISIBLE
+                    null
+                }
+            }
+            fun hireDate(): Unit? {
+                return if (hireDate.isNotEmpty()) {
+                    binding.employeeHireDateHelperText.visibility = View.INVISIBLE
+                } else {
+                    binding.employeeHireDateHelperText.visibility = View.VISIBLE
+                    null
+                }
+            }
+            fun contractType(): Unit? {
+                return if (contractType.isNotEmpty()) {
+                    binding.employeeContractTypeHelperText.visibility = View.INVISIBLE
+                } else {
+                    binding.employeeContractTypeHelperText.visibility = View.VISIBLE
+                    null
+                }
+            }
+            fun salary(): Unit? {
+                return if (salary.isNotEmpty()) {
+                    binding.employeeSalaryHelperText.visibility = View.INVISIBLE
+                } else {
+                    binding.employeeSalaryHelperText.visibility = View.VISIBLE
+                    null
+                }
+            }
+            fun email() {
+                return if (email.isEmpty()) {
+                    binding.employeeEmailHelperText.visibility = View.VISIBLE
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                    // Checking email structure 'aa@aa.aa'
+                    binding.employeeEmailHelperText.setText(R.string.emailFormat)
+                    binding.employeeEmailHelperText.visibility = View.VISIBLE
+                } else {
+                    binding.employeeEmailHelperText.visibility = View.INVISIBLE
+                }
+            }
+
+            fun phoneNumber(): Unit? {
+                return if (phoneNumber.isNotEmpty()) {
+                    binding.employeePhoneNumberHelperText.visibility = View.INVISIBLE
+                } else {
+                    binding.employeePhoneNumberHelperText.visibility = View.VISIBLE
+                    null
+                }
+            }
+            fun city(): Unit? {
+                return if (city.isNotEmpty()) {
+                    binding.employeeCityHelperText.visibility = View.INVISIBLE
+                } else {
+                    binding.employeeCityHelperText.visibility = View.VISIBLE
+                    null
+                }
+            }
+            fun address(): Unit? {
+                return if (address.isNotEmpty()) {
+                    binding.employeeAddressHelperText.visibility = View.INVISIBLE
+                } else {
+                    binding.employeeAddressHelperText.visibility = View.VISIBLE
+                    null
+                }
+            }
+            fun state(): Unit? {
+                return if (state.isNotEmpty()) {
+                    binding.employeeStateHelperText.visibility = View.INVISIBLE
+                } else {
+                    binding.employeeStateHelperText.visibility = View.VISIBLE
+                    null
+                }
+            }
+            fun zipCode(): Unit? {
+                return if (zipCode.isNotEmpty()) {
+                    binding.employeeZipCodeHelperText.visibility = View.INVISIBLE
+                } else {
+                    binding.employeeZipCodeHelperText.visibility = View.VISIBLE
+                    null
+                }
+            }
+            fun country(): Unit? {
+                return if (country.isNotEmpty()) {
+                    binding.employeeCountryHelperText.visibility = View.INVISIBLE
+                } else {
+                    binding.employeeCountryHelperText.visibility = View.VISIBLE
+                    null
+                }
+            }
+
+
+            // Time to check input fields from user's inputs & wrap all as -current- Employee object
+            if (
+                firstName.isNotEmpty() &&
+                lastName.isNotEmpty() &&
+                jobRole.isNotEmpty() &&
+                department.isNotEmpty() &&
+                hireDate.isNotEmpty() &&
+                contractType.isNotEmpty() &&
+                salary.isNotEmpty()  &&
+                email.isNotEmpty() &&
+                phoneNumber.isNotEmpty() &&
+                city.isNotEmpty() &&
+                address.isNotEmpty() &&
+                state.isNotEmpty() &&
+                zipCode.isNotEmpty() &&
+                country.isNotEmpty()
+            ){
                 // if details are input, then save them to the database
-                val salary = salary.toDouble()
+                val salary = salary.toDouble() // Double type
                 val employee = Employee(currentEmployee.id, firstName, lastName, jobRole, initials, phoneNumber, email, department, hireDate, contractType, salary, address, city, state, zipCode, country)
                 employeeViewModel.updateEmployee(employee)
 
@@ -204,8 +374,23 @@ class EditEmployeeFragment : Fragment(R.layout.fragment_edit_employee) {
                 Toast.makeText(context, "Employee updated", Toast.LENGTH_LONG).show()
                 view.findNavController().popBackStack(R.id.homeFragment, false)
             } else {
-                // not all details are completed, then show message
-                Toast.makeText(context, "Please enter employee's details", Toast.LENGTH_LONG).show()
+                // not all details are completed, then show general message at the bottom
+                Toast.makeText(context, "Please enter all employee's details with valid data", Toast.LENGTH_LONG).show()
+                // checking which input field was incomplete and show message at input field level
+                firstName()
+                lastName()
+                jobRole()
+                department()
+                hireDate()
+                contractType()
+                salary()
+                email()
+                phoneNumber()
+                city()
+                address()
+                state()
+                zipCode()
+                country()
             }
         }
 
