@@ -63,6 +63,25 @@
                 tools:layout_editor_absoluteY="40dp" />
 
             <TextView
+                android:id="@+id/employeeId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:background="@drawable/employee_id_bg_tag"
+                android:gravity="center"
+                android:paddingRight="8dp"
+                android:paddingLeft="8dp"
+                android:text="@string/employeeId"
+                android:backgroundTint="@color/grayLight"
+                android:textColor="@color/blueDark"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBaseline_toBaselineOf="@id/employeeFirstName"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+            <TextView
                 android:id="@+id/employeeJobRole"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

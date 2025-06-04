@@ -45,12 +45,12 @@ class EmployeeAdapter : RecyclerView.Adapter<EmployeeAdapter.EmployeeViewHolder>
         val currentEmployee = differ.currentList[position]
 
         // I'm linking UI elements with data to be displayed
-        //TODO:If I want to display another attribute in the list, I need to come back here and adjust it
         holder.itemBinding.employeeInitials.text = currentEmployee.initials
         holder.itemBinding.employeeFirstName.text = currentEmployee.firstName
         holder.itemBinding.employeeLastName.text = currentEmployee.lastName
         holder.itemBinding.employeeJobRole.text = currentEmployee.jobRole
         holder.itemBinding.employeeDepartment.text = currentEmployee.department
+        holder.itemBinding.employeeId.text = currentEmployee.id.toString()
 
         // Setting to click on an item and display the Employee details
         holder.itemView.setOnClickListener(){
