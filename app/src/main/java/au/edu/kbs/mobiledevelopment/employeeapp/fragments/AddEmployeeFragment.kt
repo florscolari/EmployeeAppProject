@@ -149,6 +149,7 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
             return if (email.isEmpty()) {
                 binding.employeeEmailHelperText.visibility = View.VISIBLE
             } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                // Checking email structure 'aa@aa.aa'
                 binding.employeeEmailHelperText.setText(R.string.emailFormat)
                 binding.employeeEmailHelperText.visibility = View.VISIBLE
             } else {
@@ -204,8 +205,6 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
                 null
             }
         }
-
-
 
 
         // Time to check input fields from user's inputs & wrap all as an Employee object
