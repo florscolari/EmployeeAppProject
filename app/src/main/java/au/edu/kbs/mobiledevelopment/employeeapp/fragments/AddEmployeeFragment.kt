@@ -86,7 +86,41 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
         //Initials are manipulated but not asked to the user
         val initials = getInitials(firstName, lastName)
 
-        // Helper Text to display error messages
+        // User input validation: each case handle with helper text displayed at input field level
+        fun firstName(): Unit? {
+            return if (firstName.isNotEmpty()) {
+                binding.employeeFirstNameHelperText.visibility = View.INVISIBLE
+            } else {
+                binding.employeeFirstNameHelperText.visibility = View.VISIBLE
+                null
+            }
+        }
+
+        fun lastName(): Unit? {
+            return if (lastName.isNotEmpty()) {
+                binding.employeeLastNameHelperText.visibility = View.INVISIBLE
+            } else {
+                binding.employeeLastNameHelperText.visibility = View.VISIBLE
+                null
+            }
+        }
+
+        fun salary(): Unit? {
+            return if (salary.isNotEmpty()) {
+                binding.employeeSalaryHelperText.visibility = View.INVISIBLE
+            } else {
+                binding.employeeSalaryHelperText.visibility = View.VISIBLE
+                null
+            }
+        }
+
+
+
+
+
+
+
+
 
         // firstName.isNotEmpty() && lastName.isNotEmpty() && jobRole.isNotEmpty() && department.isNotEmpty() && hireDate.isNotEmpty() && hireDate.isNotEmpty()
         if (firstName.isNotEmpty() && salary.isNotEmpty()){
@@ -99,9 +133,13 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
             Toast.makeText(addEmployeeView.context, "Employee added", Toast.LENGTH_LONG).show()
             view.findNavController().popBackStack(R.id.homeFragment, false)
         } else {
-            // not all details are completed, then show message
-            Toast.makeText(addEmployeeView.context, "Please enter all details", Toast.LENGTH_LONG).show()
-            binding.employeeFirstNameHelperText.visibility = View.VISIBLE
+            // not all details are completed, then show general message at the bottom
+            Toast.makeText(addEmployeeView.context, "Employee added", Toast.LENGTH_LONG).show()
+            // checking which input field was incomplete and show message at input field level
+            firstName()
+            lastName()
+            salary()
+
         }
     }
 

@@ -97,12 +97,26 @@
             android:layout_below="@id/employeeFirstNameHelperText"
             android:layout_marginTop="12dp" />
 
+        <TextView
+            android:id="@+id/employeeLastNameHelperText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:visibility="invisible"
+            android:text="@string/firstNameRequired"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="12sp"
+            android:layout_below="@id/employeeLastName"/>
+
         <EditText
             android:id="@+id/employeeJobRole"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/employeeLastName"
-            android:layout_marginTop="12dp"
+            android:layout_below="@id/employeeLastNameHelperText"
+            android:layout_marginTop="4dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:autofillHints=""
@@ -177,11 +191,25 @@
             android:padding="12dp"
             android:textSize="16sp" />
 
+        <TextView
+            android:id="@+id/employeeSalaryHelperText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:visibility="invisible"
+            android:text="@string/firstNameRequired"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="12sp"
+            android:layout_below="@id/employeeContractType"/>
+
         <EditText
             android:id="@+id/employeeEmail"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/employeeSalary"
+            android:layout_below="@id/employeeSalaryHelperText"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
