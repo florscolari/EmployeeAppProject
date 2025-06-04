@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-@Database(entities = [Employee::class], version = 7)
+@Database(entities = [Employee::class], version = 3)
 abstract class EmployeeDatabase: RoomDatabase() {
 
     abstract fun getEmployeeDao(): EmployeeDao
