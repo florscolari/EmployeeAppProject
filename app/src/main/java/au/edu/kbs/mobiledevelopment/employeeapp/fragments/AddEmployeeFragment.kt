@@ -15,6 +15,10 @@ import au.edu.kbs.mobiledevelopment.employeeapp.R
 import au.edu.kbs.mobiledevelopment.employeeapp.databinding.FragmentAddEmployeeBinding
 import au.edu.kbs.mobiledevelopment.employeeapp.model.Employee
 import au.edu.kbs.mobiledevelopment.employeeapp.viewmodel.EmployeeViewModel
+import com.google.android.material.datepicker.MaterialDatePicker
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 
 class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
@@ -96,6 +100,25 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
                 binding.employeeContractType.showDropDown()
             }
         }
+
+        // Date Picker from MaterialDatePicker UI Component for Hire Date
+        // Grabbing UI element from fragment .xml
+        val hireDate = binding.employeeHireDate
+        val datePicker = MaterialDatePicker.Builder.datePicker()
+            .setTitleText("Select Hiring Date")
+            .build()
+
+        // To display the picker when user taps the input field
+        hireDate.setOnClickListener{
+            datePicker.show(parentFragmentManager, "DATE_PICKER")
+        }
+
+        // To handle when user selects the date from the picker
+        datePicker.addOnPositiveButtonClickListener { selection ->
+            val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+            val formattedDate = sdf.format(Date(selection))
+            hireDate.setText(formattedDate)
+        } // When typing the date, the pattern is MM-dd-yyyy but I couldn't change it.
 
 
         // Checks if at least 1 input has a value to show an Alert Dialog when back btn tapped
