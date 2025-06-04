@@ -23,6 +23,9 @@ class EmployeeRepository(private val db: EmployeeDatabase) {
     // Get All Employee method - No parameter required because is retrieving all employees
     fun getAllEmployees() = db.getEmployeeDao().getAllEmployees()
 
+    // Get total number of employees
+    suspend fun getEmployeeCount() = db.getEmployeeDao().getEmployeeCount()
+
     // Search Employee method
     fun searchEmployee(query: String?) = db.getEmployeeDao().searchEmployee(query)
 

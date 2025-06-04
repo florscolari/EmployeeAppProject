@@ -37,6 +37,10 @@ interface EmployeeDao {
     @Query("SELECT * FROM EMPLOYEES ORDER BY id")
     fun getAllEmployees(): LiveData<List<Employee>>
 
+    // Count All employees
+    @Query("SELECT COUNT(*) FROM EMPLOYEES")
+    suspend fun getEmployeeCount(): Int
+
     // Search employees by id, first name and last name
     @Query("SELECT * FROM EMPLOYEES WHERE id LIKE :query or firstName LIKE :query or lastName LIKE :query")
     fun searchEmployee(query: String?): LiveData<List<Employee>>

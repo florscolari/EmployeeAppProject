@@ -28,6 +28,14 @@ class EmployeeViewModel(app: Application, private val employeeRepository: Employ
     //fun getAllEmployees() = employeeRepository.getAllEmployees()
     val allEmployees = employeeRepository.getAllEmployees()
 
+    // fun getEmployeeCount() to display the total number of employees on the database
+    fun getEmployeeCount(onResult: (Int) -> Unit) {
+        viewModelScope.launch {
+            val count = employeeRepository.getEmployeeCount()
+            onResult(count)
+        }
+    }
+
     fun searchEmployee(query: String?) =
         employeeRepository.searchEmployee(query)
 

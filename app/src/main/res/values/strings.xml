@@ -53,5 +53,7 @@
 
     <string name="employeeHeading">EmployMate</string>
     <string name="employeeSubheading">Keep track of your team — add, edit, or search employees in a snap!</string>
+    <string name="employeeTotalNumber">00</string>
+    <string name="employeeTotal">Employees:</string>
 
 </resources>

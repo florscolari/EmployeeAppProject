@@ -61,6 +61,11 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         binding.addEmployeeFab.setOnClickListener{
             it.findNavController().navigate(R.id.action_homeFragment_to_addEmployeeFragment)
         }
+        // set total employee counter
+        employeeViewModel.getEmployeeCount { count ->
+            binding.employeeTotalNumber.text = count.toString()
+
+        }
     }
 
     // To update the UI: switches between empty state (image) & list of employees when there is at least 1 employee to be listed.
