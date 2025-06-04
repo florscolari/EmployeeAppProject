@@ -1,6 +1,7 @@
 Assessment 3 for Subject TECH 4300 Mobile Development - June 2025
 ID 1847863 Florencia Scolari
 Available on GitHub. Public Repository https://github.com/florscolari/TECH4300A3EmployeeAppProject
+
 Demo recording available in this project folder (You can watch some cartoons if you'd like... don't have sound)
 
 Out of Scope
