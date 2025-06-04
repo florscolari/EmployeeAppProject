@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-@Database(entities = [Employee::class], version = 4)
+@Database(entities = [Employee::class], version = 5)
 abstract class EmployeeDatabase: RoomDatabase() {
 
     abstract fun getEmployeeDao(): EmployeeDao
@@ -57,7 +57,6 @@ abstract class EmployeeDatabase: RoomDatabase() {
                     firstName = "Ella",
                     lastName = "Taylor",
                     jobRole = "Retail Assistant",
-                    imgReference = "",
                     initials = "ET",
                     phoneNumber = "0411 123 456",
                     email = "ella.taylor@company.com",
@@ -76,7 +75,6 @@ abstract class EmployeeDatabase: RoomDatabase() {
                     firstName = "Mason",
                     lastName = "Green",
                     jobRole = "Warehouse Coordinator",
-                    imgReference = "",
                     initials = "MG",
                     phoneNumber = "0402 654 321",
                     email = "mason.green@company.com",

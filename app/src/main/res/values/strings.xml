@@ -26,4 +26,5 @@
     <string name="enter_zip_code">Zip code</string>
     <string name="enter_country">Country</string>
     <string name="cancel">Cancel</string>
+    <string name="firstNameRequired">Enter a valid name</string>
 </resources>

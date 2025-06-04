@@ -56,10 +56,10 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
         // calculate the initials when getting from user input
         fun getInitials(firstName: String?, lastName: String?): String {
             var initials = ""
-            if (firstName != null && firstName.isNotEmpty()) {
+            if (!firstName.isNullOrEmpty()) {
                 initials += firstName.take(1)
             }
-            if (lastName != null && lastName.isNotEmpty()) {
+            if (!lastName.isNullOrEmpty()) {
                 initials += lastName.take(1)
             }
             return initials
@@ -70,26 +70,29 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
         val firstName = binding.employeeFirstName.text.toString().trim()
         val lastName = binding.employeeLastName.text.toString().trim()
         val jobRole = binding.employeeJobRole.text.toString().trim()
+        // Extended user inputs
+        val department = binding.employeeDepartment.text.toString().trim()
+        val hireDate = binding.employeeHireDate.text.toString().trim()
+        val contractType = binding.employeeContractType.text.toString().trim()
+        val salary = binding.employeeSalary.text.toString().trim()
+        val email = binding.employeeEmail.text.toString().trim()
+        val phoneNumber = binding.employeePhoneNumber.text.toString().trim()
+        val address = binding.employeeAddress.text.toString().trim()
+        val city = binding.employeeCity.text.toString().trim()
+        val state = binding.employeeState.text.toString().trim()
+        val zipCode = binding.employeeZipCode.text.toString().trim()
+        val country = binding.employeeCountry.text.toString().trim()
 
-        //todo: values to add
-        val imgReference = "aaa"
+        //Initials are manipulated but not asked to the user
         val initials = getInitials(firstName, lastName)
-        val phoneNumber = "00"
-        val email = "a@e.com"
-        val department = ""
-        val hireDate = ""
-        val contractType = ""
-        val salary = 000.00
-        val address = ""
-        val city = ""
-        val state = ""
-        val zipCode = ""
-        val country = "Australia"
 
+        // Helper Text to display error messages
 
-        if (firstName.isNotEmpty() && lastName.isNotEmpty() && jobRole.isNotEmpty()){
+        // firstName.isNotEmpty() && lastName.isNotEmpty() && jobRole.isNotEmpty() && department.isNotEmpty() && hireDate.isNotEmpty() && hireDate.isNotEmpty()
+        if (firstName.isNotEmpty() && salary.isNotEmpty()){
             // if details are input, then save them to the database
-            val employee = Employee(0, firstName, lastName, jobRole, imgReference, initials, phoneNumber, email, department, hireDate, contractType, salary, address, city, state, zipCode, country)
+            val salary = salary.toDouble() // Double type
+            val employee = Employee(0, firstName, lastName, jobRole, initials, phoneNumber, email, department, hireDate, contractType, salary, address, city, state, zipCode, country)
             employeeViewModel.addEmployee(employee)
 
             // display a successful message and navigate back to the main screen
@@ -97,7 +100,8 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
             view.findNavController().popBackStack(R.id.homeFragment, false)
         } else {
             // not all details are completed, then show message
-            Toast.makeText(addEmployeeView.context, "Please enter employee's details", Toast.LENGTH_LONG).show()
+            Toast.makeText(addEmployeeView.context, "Please enter all details", Toast.LENGTH_LONG).show()
+            binding.employeeFirstNameHelperText.visibility = View.VISIBLE
         }
     }
 

@@ -13,7 +13,6 @@ data class Employee(
     val firstName: String,
     val lastName: String,
     val jobRole: String,
-    val imgReference: String,
     val initials: String,
     val phoneNumber: String,
     val email: String,

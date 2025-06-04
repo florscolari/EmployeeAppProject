@@ -80,7 +80,7 @@ class EditEmployeeFragment : Fragment(R.layout.fragment_edit_employee) {
             val jobRole = binding.editEmployeeJobRole.text.toString().trim()
 
             //todo: values to add
-            val imgReference = "aaa"
+
             val initials = getInitials(firstName, lastName)
             val phoneNumber = "00"
             val email = "a@e.com"
@@ -96,7 +96,7 @@ class EditEmployeeFragment : Fragment(R.layout.fragment_edit_employee) {
 
             if (firstName.isNotEmpty() && lastName.isNotEmpty() && jobRole.isNotEmpty()){
                 // if details are input, then save them to the database
-                val employee = Employee(currentEmployee.id, firstName, lastName, jobRole, imgReference, initials, phoneNumber, email, department, hireDate, contractType, salary, address, city, state, zipCode, country)
+                val employee = Employee(currentEmployee.id, firstName, lastName, jobRole, initials, phoneNumber, email, department, hireDate, contractType, salary, address, city, state, zipCode, country)
                 employeeViewModel.updateEmployee(employee)
 
                 // display a successful message and navigate back to the main screen

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -65,7 +64,22 @@
             android:layout_below="@id/addEmployeeTextRequiredFields"
             android:layout_marginTop="16dp"
             android:maxLines="1"
-            android:fontFamily="@font/poppins_regular"/>
+            android:fontFamily="@font/poppins_regular"
+            app:helperText="Required"/>
+
+        <TextView
+            android:id="@+id/employeeFirstNameHelperText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:visibility="invisible"
+            android:text="@string/firstNameRequired"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="12sp"
+            android:layout_below="@id/employeeFirstName"/>
 
         <EditText
             android:id="@+id/employeeLastName"
@@ -80,7 +94,7 @@
             android:layout_marginEnd="16dp"
             android:textSize="16sp"
             android:fontFamily="@font/poppins_regular"
-            android:layout_below="@id/employeeFirstName"
+            android:layout_below="@id/employeeFirstNameHelperText"
             android:layout_marginTop="12dp" />
 
         <EditText
@@ -191,7 +205,9 @@
             android:fontFamily="@font/poppins_regular"
             android:gravity="top"
             android:hint="@string/enter_phone_number"
-            android:inputType="phone"
+            android:inputType="number"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
             android:padding="12dp"
             android:textSize="16sp" />
 
