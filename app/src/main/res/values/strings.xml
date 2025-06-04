@@ -14,6 +14,7 @@
     <string name="no_employees_in_the_list">No employees in the list</string>
     <string name="delete">Delete</string>
     <string name="all_fields_required">All fields required</string>
+    <string name="all_fields_required_edit">Note that all fields must be completed</string>
     <string name="enter_email">email</string>
     <string name="enter_department">Select department</string>
     <string name="enter_hire_date">Select hire date</string>

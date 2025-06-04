@@ -57,9 +57,21 @@ class EditEmployeeFragment : Fragment(R.layout.fragment_edit_employee) {
         employeeViewModel = (activity as MainActivity).employeeViewModel
         currentEmployee = args.employee!!
 
+        // Displaying current employee's details from the database
         binding.editEmployeeFirstName.setText(currentEmployee.firstName)
         binding.editEmployeeLastName.setText(currentEmployee.lastName)
         binding.editEmployeeJobRole.setText(currentEmployee.jobRole)
+        binding.editEmployeeDepartment.setText(currentEmployee.department)
+        binding.editEmployeeHireDate.setText(currentEmployee.hireDate)
+        binding.editEmployeeContractType.setText(currentEmployee.contractType)
+        binding.editEmployeeSalary.setText(currentEmployee.salary.toString())
+        binding.editEmployeeEmail.setText(currentEmployee.email)
+        binding.editEmployeePhoneNumber.setText(currentEmployee.phoneNumber)
+        binding.editEmployeeAddress.setText(currentEmployee.address)
+        binding.editEmployeeCity.setText(currentEmployee.city)
+        binding.editEmployeeState.setText(currentEmployee.state)
+        binding.editEmployeeZipCode.setText(currentEmployee.zipCode)
+        binding.editEmployeeCountry.setText(currentEmployee.country)
 
         binding.editEmployeeSaveBtn.setOnClickListener{
             // calculate the initials when getting from user input
@@ -74,28 +86,29 @@ class EditEmployeeFragment : Fragment(R.layout.fragment_edit_employee) {
                 return initials
             }
 
-            // Taking user inputs
+            // Taking user inputs for UPDATING
             val firstName = binding.editEmployeeFirstName.text.toString().trim()
             val lastName = binding.editEmployeeLastName.text.toString().trim()
             val jobRole = binding.editEmployeeJobRole.text.toString().trim()
+            val department = binding.editEmployeeDepartment.text.toString().trim()
+            val hireDate = binding.editEmployeeHireDate.text.toString().trim()
+            val contractType = binding.editEmployeeContractType.text.toString().trim()
+            val salary = binding.editEmployeeSalary.text.toString().trim()
+            val email = binding.editEmployeeEmail.text.toString().trim()
+            val phoneNumber = binding.editEmployeePhoneNumber.text.toString().trim()
+            val address = binding.editEmployeeAddress.text.toString().trim()
+            val city = binding.editEmployeeCity.text.toString().trim()
+            val state = binding.editEmployeeState.text.toString().trim()
+            val zipCode = binding.editEmployeeZipCode.text.toString().trim()
+            val country = binding.editEmployeeCountry.text.toString().trim()
 
-            //todo: values to add
-
+            //Initials are manipulated but not asked to the user
             val initials = getInitials(firstName, lastName)
-            val phoneNumber = "00"
-            val email = "a@e.com"
-            val department = ""
-            val hireDate = ""
-            val contractType = ""
-            val salary = 000.00
-            val address = ""
-            val city = ""
-            val state = ""
-            val zipCode = ""
-            val country = "Australia"
+
 
             if (firstName.isNotEmpty() && lastName.isNotEmpty() && jobRole.isNotEmpty()){
                 // if details are input, then save them to the database
+                val salary = salary.toDouble()
                 val employee = Employee(currentEmployee.id, firstName, lastName, jobRole, initials, phoneNumber, email, department, hireDate, contractType, salary, address, city, state, zipCode, country)
                 employeeViewModel.updateEmployee(employee)
 
