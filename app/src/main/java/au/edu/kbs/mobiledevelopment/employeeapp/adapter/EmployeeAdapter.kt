@@ -50,6 +50,7 @@ class EmployeeAdapter : RecyclerView.Adapter<EmployeeAdapter.EmployeeViewHolder>
         holder.itemBinding.employeeFirstName.text = currentEmployee.firstName
         holder.itemBinding.employeeLastName.text = currentEmployee.lastName
         holder.itemBinding.employeeJobRole.text = currentEmployee.jobRole
+        holder.itemBinding.employeeDepartment.text = currentEmployee.department
 
         // Setting to click on an item and display the Employee details
         holder.itemView.setOnClickListener(){

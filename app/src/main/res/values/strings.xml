@@ -3,9 +3,9 @@
     <string name="search">Search</string>
     <string name="save">Save</string>
     <string name="edit">Edit</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="image">image</string>
+    <string name="department">Department</string>
     <string name="enter_first_name">First name</string>
     <string name="enter_last_name">Last name</string>
     <string name="enter_job_role">Select job role</string>
@@ -48,5 +48,6 @@
     <string name="lastname">LastName</string>
     <string name="job_role">Job Role</string>
     <string name="ab">AB</string>
+    <string name="prepositionIn">" | "</string>
 
 </resources>
