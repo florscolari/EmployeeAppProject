@@ -44,5 +44,8 @@
     <string name="stateRequired">Enter state</string>
     <string name="zipCodeRequired">Enter zip code</string>
     <string name="countryRequired">Enter country</string>
+    <string name="firstname">FirstName</string>
+    <string name="lastname">LastName</string>
+    <string name="job_role">Job Role</string>
 
 </resources>
