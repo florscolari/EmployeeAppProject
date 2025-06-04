@@ -36,6 +36,7 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Checks if at least 1 input has a value to show an Alert Dialog when back btn tapped
         fun checkForChangesBeforeLeaving() {
             val hasAnyInput = listOf(
                 binding.employeeFirstName.text.toString(),
@@ -67,17 +68,15 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
                 view.findNavController().popBackStack(R.id.homeFragment, false)
             }
         }
+
+
         // Setup toolbar with back btn
         val toolbar = binding.addToolbar
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
-        // Check if at least 1 fields has been input -> show confirmation message to leave
+        // Calling function to check inputs when tapping on toolbar nav (back btn) -> show confirmation message to leave
         toolbar.setNavigationOnClickListener {
             checkForChangesBeforeLeaving()
         }
-
-
-
-
 
 
 
@@ -91,7 +90,7 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
     }
 
 
-
+    // Save Employee Detail Function
     private fun saveEmployee(view: View){
         // calculate the initials when getting from user input
         fun getInitials(firstName: String?, lastName: String?): String {
