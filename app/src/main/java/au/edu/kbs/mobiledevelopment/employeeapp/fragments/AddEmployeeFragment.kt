@@ -6,6 +6,7 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -35,6 +36,67 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Dropdown for Department Options
+        val departmentDropdown = listOf("Admin", "Finance", "HR", "IT", "Marketing", "Sales")
+        val departmentAdapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_list_item_1,
+            departmentDropdown
+        )
+
+        binding.employeeDepartment.setAdapter(departmentAdapter)
+        binding.employeeDepartment.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                binding.employeeDepartment.showDropDown()
+            }
+        }
+
+        // Dropdown for Job role Options
+        val jobRoleDropdown = listOf("Customer Service Rep",
+            "Delivery Driver",
+            "Finance Assistant",
+            "HR Analyst",
+            "HR Manager",
+            "Inventory Analyst",
+            "IT Analyst",
+            "IT Manager",
+            "IT Support Technician",
+            "Logistics Coordinator",
+            "Logistics Coordinator",
+            "MKT Analyst",
+            "Sales Associate",
+            "Store Manager",
+            "Warehouse Driver",
+            "Warehouse Worker",)
+        val jobRoleAdapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_list_item_1,
+            jobRoleDropdown
+        )
+
+        binding.employeeJobRole.setAdapter(jobRoleAdapter)
+        binding.employeeJobRole.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                binding.employeeJobRole.showDropDown()
+            }
+        }
+
+        // Dropdown for Contract Type Options
+        val contractTypeDropdown = listOf("Full-time", "Part-time", "Casual", "Contract")
+        val contractTypeAdapter = ArrayAdapter(
+            requireContext(),
+            android.R.layout.simple_list_item_1,
+            contractTypeDropdown
+        )
+
+        binding.employeeContractType.setAdapter(contractTypeAdapter)
+        binding.employeeContractType.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) {
+                binding.employeeContractType.showDropDown()
+            }
+        }
+
 
         // Checks if at least 1 input has a value to show an Alert Dialog when back btn tapped
         fun checkForChangesBeforeLeaving() {

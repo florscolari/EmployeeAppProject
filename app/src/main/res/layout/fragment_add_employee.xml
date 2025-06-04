@@ -112,21 +112,38 @@
             android:textSize="12sp"
             android:layout_below="@id/employeeLastName"/>
 
-        <EditText
-            android:id="@+id/employeeJobRole"
+        <!-- Dropdown container JobRole STARTS -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/employeeJobRoleContainer"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/employeeLastNameHelperText"
-            android:layout_marginTop="12dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:autofillHints=""
-            android:fontFamily="@font/poppins_regular"
-            android:gravity="top"
-            android:hint="@string/enter_job_role"
-            android:inputType="text"
-            android:padding="12dp"
-            android:textSize="16sp" />
+            app:boxBackgroundMode="filled"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:boxStrokeColor="@color/black"
+            app:hintEnabled="false"
+            >
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/employeeJobRole"
+                android:layout_below="@id/employeeLastNameHelperText"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:autofillHints=""
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="top"
+                android:hint="@string/enter_job_role"
+                android:inputType="text"
+                android:padding="12dp"
+                android:textSize="16sp"
+                android:layout_height="60dp"
+                android:layout_width="match_parent"
+                android:dropDownHeight="wrap_content"
+                android:background="@null"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+        <!-- Dropdown container JobRole ENDS -->
 
         <TextView
             android:id="@+id/employeeJobRoleHelperText"
@@ -140,23 +157,41 @@
             android:visibility="invisible"
             android:text="@string/jobRoleRequired"
             android:textSize="12sp"
-            android:layout_below="@id/employeeJobRole"/>
+            android:layout_below="@id/employeeJobRoleContainer"/>
 
-        <EditText
-            android:id="@+id/employeeDepartment"
+        <!-- Dropdown container Department STARTS -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/employeeDepartmentContainer"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/employeeJobRoleHelperText"
-            android:layout_marginTop="12dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:autofillHints=""
-            android:fontFamily="@font/poppins_regular"
-            android:gravity="top"
-            android:hint="@string/enter_department"
-            android:inputType="text"
-            android:padding="12dp"
-            android:textSize="16sp" />
+            app:boxBackgroundMode="filled"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:boxStrokeColor="@color/black"
+            app:hintEnabled="false"
+            >
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/employeeDepartment"
+                android:layout_below="@id/employeeJobRoleHelperText"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:autofillHints=""
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="top"
+                android:hint="@string/enter_department"
+                android:inputType="text"
+                android:padding="12dp"
+                android:textSize="16sp"
+                android:layout_height="60dp"
+                android:layout_width="match_parent"
+                android:dropDownHeight="wrap_content"
+                android:background="@null"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+        <!-- Dropdown container Department ENDS -->
+
 
         <TextView
             android:id="@+id/employeeDepartmentHelperText"
@@ -170,7 +205,8 @@
             android:visibility="invisible"
             android:text="@string/departmentRequired"
             android:textSize="12sp"
-            android:layout_below="@id/employeeDepartment"/>
+            android:layout_below="@id/employeeDepartmentContainer"
+            tools:ignore="NotSibling" />
 
         <EditText
             android:id="@+id/employeeHireDate"
@@ -202,21 +238,38 @@
             android:textSize="12sp"
             android:layout_below="@id/employeeHireDate"/>
 
-        <EditText
-            android:id="@+id/employeeContractType"
+        <!-- Dropdown container Department STARTS -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/employeeContractTypeContainer"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/employeeHireDateHelperText"
-            android:layout_marginTop="12dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:autofillHints=""
-            android:fontFamily="@font/poppins_regular"
-            android:gravity="top"
-            android:hint="@string/enter_contract_type"
-            android:inputType="text"
-            android:padding="12dp"
-            android:textSize="16sp" />
+            app:boxBackgroundMode="filled"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:boxStrokeColor="@color/black"
+            app:hintEnabled="false"
+            >
+
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/employeeContractType"
+                android:layout_below="@id/employeeHireDateHelperText"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:autofillHints=""
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="top"
+                android:hint="@string/enter_contract_type"
+                android:inputType="text"
+                android:padding="12dp"
+                android:textSize="16sp"
+                android:layout_height="60dp"
+                android:layout_width="match_parent"
+                android:dropDownHeight="wrap_content"
+                android:background="@null"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+        <!-- Dropdown container contractType ENDS -->
 
         <TextView
             android:id="@+id/employeeContractTypeHelperText"
@@ -230,7 +283,7 @@
             android:visibility="invisible"
             android:text="@string/contractTypeRequired"
             android:textSize="12sp"
-            android:layout_below="@id/employeeContractType"/>
+            android:layout_below="@id/employeeContractTypeContainer"/>
 
         <EditText
             android:id="@+id/employeeSalary"
