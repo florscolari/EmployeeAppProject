@@ -13,6 +13,7 @@ import au.edu.kbs.mobiledevelopment.employeeapp.R
 import au.edu.kbs.mobiledevelopment.employeeapp.databinding.FragmentAddEmployeeBinding
 import au.edu.kbs.mobiledevelopment.employeeapp.model.Employee
 import au.edu.kbs.mobiledevelopment.employeeapp.viewmodel.EmployeeViewModel
+import java.util.Locale
 
 
 class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
@@ -104,7 +105,38 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
                 null
             }
         }
-
+        fun jobRole(): Unit? {
+            return if (jobRole.isNotEmpty()) {
+                binding.employeeJobRoleHelperText.visibility = View.INVISIBLE
+            } else {
+                binding.employeeJobRoleHelperText.visibility = View.VISIBLE
+                null
+            }
+        }
+        fun department(): Unit? {
+            return if (department.isNotEmpty()) {
+                binding.employeeDepartmentHelperText.visibility = View.INVISIBLE
+            } else {
+                binding.employeeDepartmentHelperText.visibility = View.VISIBLE
+                null
+            }
+        }
+        fun hireDate(): Unit? {
+            return if (hireDate.isNotEmpty()) {
+                binding.employeeHireDateHelperText.visibility = View.INVISIBLE
+            } else {
+                binding.employeeHireDateHelperText.visibility = View.VISIBLE
+                null
+            }
+        }
+        fun contractType(): Unit? {
+            return if (contractType.isNotEmpty()) {
+                binding.employeeContractTypeHelperText.visibility = View.INVISIBLE
+            } else {
+                binding.employeeContractTypeHelperText.visibility = View.VISIBLE
+                null
+            }
+        }
         fun salary(): Unit? {
             return if (salary.isNotEmpty()) {
                 binding.employeeSalaryHelperText.visibility = View.INVISIBLE
@@ -113,17 +145,83 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
                 null
             }
         }
+        fun email(): Unit? {
+            return if (email.isNotEmpty()) {
+                binding.employeeEmailHelperText.visibility = View.INVISIBLE
+            } else {
+                binding.employeeEmailHelperText.visibility = View.VISIBLE
+                null
+            }
+        }
+        fun phoneNumber(): Unit? {
+            return if (phoneNumber.isNotEmpty()) {
+                binding.employeePhoneNumberHelperText.visibility = View.INVISIBLE
+            } else {
+                binding.employeePhoneNumberHelperText.visibility = View.VISIBLE
+                null
+            }
+        }
+        fun city(): Unit? {
+            return if (city.isNotEmpty()) {
+                binding.employeeCityHelperText.visibility = View.INVISIBLE
+            } else {
+                binding.employeeCityHelperText.visibility = View.VISIBLE
+                null
+            }
+        }
+        fun address(): Unit? {
+            return if (address.isNotEmpty()) {
+                binding.employeeAddressHelperText.visibility = View.INVISIBLE
+            } else {
+                binding.employeeAddressHelperText.visibility = View.VISIBLE
+                null
+            }
+        }
+        fun state(): Unit? {
+            return if (state.isNotEmpty()) {
+                binding.employeeStateHelperText.visibility = View.INVISIBLE
+            } else {
+                binding.employeeStateHelperText.visibility = View.VISIBLE
+                null
+            }
+        }
+        fun zipCode(): Unit? {
+            return if (zipCode.isNotEmpty()) {
+                binding.employeeZipCodeHelperText.visibility = View.INVISIBLE
+            } else {
+                binding.employeeZipCodeHelperText.visibility = View.VISIBLE
+                null
+            }
+        }
+        fun country(): Unit? {
+            return if (country.isNotEmpty()) {
+                binding.employeeCountryHelperText.visibility = View.INVISIBLE
+            } else {
+                binding.employeeCountryHelperText.visibility = View.VISIBLE
+                null
+            }
+        }
 
 
 
 
-
-
-
-
-
-        // firstName.isNotEmpty() && lastName.isNotEmpty() && jobRole.isNotEmpty() && department.isNotEmpty() && hireDate.isNotEmpty() && hireDate.isNotEmpty()
-        if (firstName.isNotEmpty() && salary.isNotEmpty()){
+        // Time to check input fields from user's inputs & wrap all as an Employee object
+        if (
+            firstName.isNotEmpty() &&
+            lastName.isNotEmpty() &&
+            jobRole.isNotEmpty() &&
+            department.isNotEmpty() &&
+            hireDate.isNotEmpty() &&
+            contractType.isNotEmpty() &&
+            salary.isNotEmpty()  &&
+            email.isNotEmpty() &&
+            phoneNumber.isNotEmpty() &&
+            city.isNotEmpty() &&
+            address.isNotEmpty() &&
+            state.isNotEmpty() &&
+            zipCode.isNotEmpty() &&
+            country.isNotEmpty()
+            ){
             // if details are input, then save them to the database
             val salary = salary.toDouble() // Double type
             val employee = Employee(0, firstName, lastName, jobRole, initials, phoneNumber, email, department, hireDate, contractType, salary, address, city, state, zipCode, country)
@@ -138,8 +236,18 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
             // checking which input field was incomplete and show message at input field level
             firstName()
             lastName()
+            jobRole()
+            department()
+            hireDate()
+            contractType()
             salary()
-
+            email()
+            phoneNumber()
+            city()
+            address()
+            state()
+            zipCode()
+            country()
         }
     }
 

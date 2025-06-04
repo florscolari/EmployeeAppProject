@@ -26,5 +26,21 @@
     <string name="enter_zip_code">Zip code</string>
     <string name="enter_country">Country</string>
     <string name="cancel">Cancel</string>
-    <string name="firstNameRequired">Enter a valid name</string>
+
+    <!-- Helper Texts on Add Employee Fragment -->
+    <string name="firstNameRequired">Enter first name</string>
+    <string name="lastNameRequired">Enter last name</string>
+    <string name="jobRoleRequired">Enter job role</string>
+    <string name="departmentRequired">Enter department</string>
+    <string name="hireDateRequired">Enter hiring date</string>
+    <string name="contractTypeRequired">Enter contract type</string>
+    <string name="salaryRequired">Enter salary</string>
+    <string name="emailRequired">Enter email address</string>
+    <string name="phoneNumberRequired">Enter phone number</string>
+    <string name="cityRequired">Enter city</string>
+    <string name="addressRequired">Enter address line</string>
+    <string name="stateRequired">Enter state</string>
+    <string name="zipCodeRequired">Enter zip code</string>
+    <string name="countryRequired">Enter country</string>
+
 </resources>

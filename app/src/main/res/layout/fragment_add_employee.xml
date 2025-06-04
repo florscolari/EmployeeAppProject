@@ -40,7 +40,7 @@
             android:id="@+id/addEmployeeTextRequiredFields"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="12dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_below="@id/addEmployeeHeading"
@@ -69,6 +69,7 @@
 
         <TextView
             android:id="@+id/employeeFirstNameHelperText"
+            style="@style/error_red"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -77,7 +78,6 @@
             android:paddingEnd="12dp"
             android:visibility="invisible"
             android:text="@string/firstNameRequired"
-            android:textColor="@android:color/darker_gray"
             android:textSize="12sp"
             android:layout_below="@id/employeeFirstName"/>
 
@@ -85,6 +85,7 @@
             android:id="@+id/employeeLastName"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_marginTop="12dp"
             android:hint="@string/enter_last_name"
             android:autofillHints=""
             android:inputType="text"
@@ -95,10 +96,11 @@
             android:textSize="16sp"
             android:fontFamily="@font/poppins_regular"
             android:layout_below="@id/employeeFirstNameHelperText"
-            android:layout_marginTop="12dp" />
+             />
 
         <TextView
             android:id="@+id/employeeLastNameHelperText"
+            style="@style/error_red"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -106,8 +108,7 @@
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
             android:visibility="invisible"
-            android:text="@string/firstNameRequired"
-            android:textColor="@android:color/darker_gray"
+            android:text="@string/lastNameRequired"
             android:textSize="12sp"
             android:layout_below="@id/employeeLastName"/>
 
@@ -116,7 +117,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_below="@id/employeeLastNameHelperText"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="12dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:autofillHints=""
@@ -127,11 +128,25 @@
             android:padding="12dp"
             android:textSize="16sp" />
 
+        <TextView
+            android:id="@+id/employeeJobRoleHelperText"
+            style="@style/error_red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:visibility="invisible"
+            android:text="@string/jobRoleRequired"
+            android:textSize="12sp"
+            android:layout_below="@id/employeeJobRole"/>
+
         <EditText
             android:id="@+id/employeeDepartment"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/employeeJobRole"
+            android:layout_below="@id/employeeJobRoleHelperText"
             android:layout_marginTop="12dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
@@ -143,11 +158,25 @@
             android:padding="12dp"
             android:textSize="16sp" />
 
+        <TextView
+            android:id="@+id/employeeDepartmentHelperText"
+            style="@style/error_red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:visibility="invisible"
+            android:text="@string/departmentRequired"
+            android:textSize="12sp"
+            android:layout_below="@id/employeeDepartment"/>
+
         <EditText
             android:id="@+id/employeeHireDate"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/employeeDepartment"
+            android:layout_below="@id/employeeDepartmentHelperText"
             android:layout_marginTop="12dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
@@ -159,11 +188,25 @@
             android:padding="12dp"
             android:textSize="16sp" />
 
+        <TextView
+            android:id="@+id/employeeHireDateHelperText"
+            style="@style/error_red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:visibility="invisible"
+            android:text="@string/hireDateRequired"
+            android:textSize="12sp"
+            android:layout_below="@id/employeeHireDate"/>
+
         <EditText
             android:id="@+id/employeeContractType"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/employeeHireDate"
+            android:layout_below="@id/employeeHireDateHelperText"
             android:layout_marginTop="12dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
@@ -175,11 +218,25 @@
             android:padding="12dp"
             android:textSize="16sp" />
 
+        <TextView
+            android:id="@+id/employeeContractTypeHelperText"
+            style="@style/error_red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:visibility="invisible"
+            android:text="@string/contractTypeRequired"
+            android:textSize="12sp"
+            android:layout_below="@id/employeeContractType"/>
+
         <EditText
             android:id="@+id/employeeSalary"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/employeeContractType"
+            android:layout_below="@id/employeeContractTypeHelperText"
             android:layout_marginTop="12dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
@@ -193,6 +250,7 @@
 
         <TextView
             android:id="@+id/employeeSalaryHelperText"
+            style="@style/error_red"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -200,10 +258,9 @@
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
             android:visibility="invisible"
-            android:text="@string/firstNameRequired"
-            android:textColor="@android:color/darker_gray"
+            android:text="@string/salaryRequired"
             android:textSize="12sp"
-            android:layout_below="@id/employeeContractType"/>
+            android:layout_below="@id/employeeSalary"/>
 
         <EditText
             android:id="@+id/employeeEmail"
@@ -220,12 +277,25 @@
             android:inputType="textEmailAddress"
             android:padding="12dp"
             android:textSize="16sp" />
+        <TextView
+            android:id="@+id/employeeEmailHelperText"
+            style="@style/error_red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:visibility="invisible"
+            android:text="@string/emailRequired"
+            android:textSize="12sp"
+            android:layout_below="@id/employeeEmail"/>
 
         <EditText
             android:id="@+id/employeePhoneNumber"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/employeeEmail"
+            android:layout_below="@id/employeeEmailHelperText"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
@@ -239,11 +309,25 @@
             android:padding="12dp"
             android:textSize="16sp" />
 
+        <TextView
+            android:id="@+id/employeePhoneNumberHelperText"
+            style="@style/error_red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:visibility="invisible"
+            android:text="@string/phoneNumberRequired"
+            android:textSize="12sp"
+            android:layout_below="@id/employeePhoneNumber"/>
+
         <EditText
             android:id="@+id/employeeAddress"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/employeePhoneNumber"
+            android:layout_below="@id/employeePhoneNumberHelperText"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
@@ -253,13 +337,27 @@
             android:hint="@string/enter_address_line"
             android:inputType="textPostalAddress"
             android:padding="12dp"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            tools:ignore="VisualLintTextFieldSize" />
+        <TextView
+            android:id="@+id/employeeAddressHelperText"
+            style="@style/error_red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:visibility="invisible"
+            android:text="@string/addressRequired"
+            android:textSize="12sp"
+            android:layout_below="@id/employeeAddress"/>
 
         <EditText
             android:id="@+id/employeeCity"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/employeeAddress"
+            android:layout_below="@id/employeeAddressHelperText"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
@@ -271,11 +369,25 @@
             android:padding="12dp"
             android:textSize="16sp" />
 
+        <TextView
+            android:id="@+id/employeeCityHelperText"
+            style="@style/error_red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:visibility="invisible"
+            android:text="@string/cityRequired"
+            android:textSize="12sp"
+            android:layout_below="@id/employeeCity"/>
+
         <EditText
             android:id="@+id/employeeState"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/employeeCity"
+            android:layout_below="@id/employeeCityHelperText"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
@@ -287,11 +399,25 @@
             android:padding="12dp"
             android:textSize="16sp" />
 
+        <TextView
+            android:id="@+id/employeeStateHelperText"
+            style="@style/error_red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:visibility="invisible"
+            android:text="@string/stateRequired"
+            android:textSize="12sp"
+            android:layout_below="@id/employeeState"/>
+
         <EditText
             android:id="@+id/employeeZipCode"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/employeeState"
+            android:layout_below="@id/employeeStateHelperText"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
@@ -302,11 +428,26 @@
             android:inputType=""
             android:padding="12dp"
             android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/employeeZipCodeHelperText"
+            style="@style/error_red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:visibility="invisible"
+            android:text="@string/zipCodeRequired"
+            android:textSize="12sp"
+            android:layout_below="@id/employeeZipCode"/>
+
         <EditText
             android:id="@+id/employeeCountry"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_below="@id/employeeZipCode"
+            android:layout_below="@id/employeeZipCodeHelperText"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
@@ -318,12 +459,26 @@
             android:padding="12dp"
             android:textSize="16sp" />
 
+        <TextView
+            android:id="@+id/employeeCountryHelperText"
+            style="@style/error_red"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:visibility="invisible"
+            android:text="@string/countryRequired"
+            android:textSize="12sp"
+            android:layout_below="@id/employeeCountry"/>
+
 
         <Button
             android:id="@+id/addEmployeeSaveBtn"
             android:layout_width="120dp"
             android:layout_height="60dp"
-            android:layout_below="@id/employeeCountry"
+            android:layout_below="@id/employeeCountryHelperText"
             android:layout_marginTop="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
