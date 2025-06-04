@@ -69,7 +69,7 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
         // Taking user inputs
         val firstName = binding.employeeFirstName.text.toString().trim()
         val lastName = binding.employeeLastName.text.toString().trim()
-        val jobRole = binding.editEmployeeJobRole.text.toString().trim()
+        val jobRole = binding.employeeJobRole.text.toString().trim()
 
         //todo: values to add
         val imgReference = "aaa"
