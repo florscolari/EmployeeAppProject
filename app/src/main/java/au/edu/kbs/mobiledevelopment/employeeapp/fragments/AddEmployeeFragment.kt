@@ -194,10 +194,16 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
             return initials
         }
 
+        // To format user inputs with Title Case
+        fun toTitleCase(text: String): String{
+            return text.split(" ").joinToString { word ->
+                word.replaceFirstChar { it.uppercaseChar()}
+            }
+        }
 
         // Taking user inputs
-        val firstName = binding.employeeFirstName.text.toString().trim()
-        val lastName = binding.employeeLastName.text.toString().trim()
+        val firstName = toTitleCase(binding.employeeFirstName.text.toString().trim())
+        val lastName = toTitleCase(binding.employeeLastName.text.toString().trim())
         val jobRole = binding.employeeJobRole.text.toString().trim()
         val department = binding.employeeDepartment.text.toString().trim()
         val hireDate = binding.employeeHireDate.text.toString().trim()
@@ -206,10 +212,10 @@ class AddEmployeeFragment : Fragment(R.layout.fragment_add_employee) {
         val email = binding.employeeEmail.text.toString().trim()
         val phoneNumber = binding.employeePhoneNumber.text.toString().trim()
         val address = binding.employeeAddress.text.toString().trim()
-        val city = binding.employeeCity.text.toString().trim()
-        val state = binding.employeeState.text.toString().trim()
+        val city = toTitleCase(binding.employeeCity.text.toString().trim())
+        val state = binding.employeeState.text.toString().trim().uppercase()
         val zipCode = binding.employeeZipCode.text.toString().trim()
-        val country = binding.employeeCountry.text.toString().trim()
+        val country = toTitleCase(binding.employeeCountry.text.toString().trim())
 
         //Initials are manipulated but not asked to the user
         val initials = getInitials(firstName, lastName)

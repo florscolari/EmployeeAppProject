@@ -208,9 +208,16 @@ class EditEmployeeFragment : Fragment(R.layout.fragment_edit_employee) {
                 return initials
             }
 
+            // To format user inputs with Title Case
+            fun toTitleCase(text: String): String{
+                return text.split(" ").joinToString { word ->
+                    word.replaceFirstChar { it.uppercaseChar()}
+                }
+            }
+
             // Taking user inputs for UPDATING
-            val firstName = binding.editEmployeeFirstName.text.toString().trim()
-            val lastName = binding.editEmployeeLastName.text.toString().trim()
+            val firstName = toTitleCase(binding.editEmployeeFirstName.text.toString().trim())
+            val lastName = toTitleCase(binding.editEmployeeLastName.text.toString().trim())
             val jobRole = binding.editEmployeeJobRole.text.toString().trim()
             val department = binding.editEmployeeDepartment.text.toString().trim()
             val hireDate = binding.editEmployeeHireDate.text.toString().trim()
@@ -219,10 +226,10 @@ class EditEmployeeFragment : Fragment(R.layout.fragment_edit_employee) {
             val email = binding.editEmployeeEmail.text.toString().trim()
             val phoneNumber = binding.editEmployeePhoneNumber.text.toString().trim()
             val address = binding.editEmployeeAddress.text.toString().trim()
-            val city = binding.editEmployeeCity.text.toString().trim()
-            val state = binding.editEmployeeState.text.toString().trim()
+            val city = toTitleCase(binding.editEmployeeCity.text.toString().trim())
+            val state = binding.editEmployeeState.text.toString().trim().uppercase()
             val zipCode = binding.editEmployeeZipCode.text.toString().trim()
-            val country = binding.editEmployeeCountry.text.toString().trim()
+            val country = toTitleCase(binding.editEmployeeCountry.text.toString().trim())
 
             //Initials are manipulated but not asked to the user
             val initials = getInitials(firstName, lastName)
